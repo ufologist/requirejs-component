@@ -1,0 +1,13 @@
+.component1 {
+    padding: 10px;
+    background-color: #ebf8f2;
+}
+
+.component1--icon {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    background-image: url(res/component-icon.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
