@@ -184,8 +184,8 @@
 ## 项目示例
 
 * [共用组件项目示例](https://github.com/ufologist/requirejs-component)
-* [使用共用组件的项目示例]()
+* [使用共用组件的项目示例](https://github.com/ufologist/requirejs-example)
 
 ## 使用方法
 
-将[共用组件项目示例](https://github.com/ufologist/requirejs-component)和[使用共用组件的项目示例]()分别下载下来, 作为项目的模版来使用即可
+将[共用组件项目示例](https://github.com/ufologist/requirejs-component/archive/master.zip)和[使用共用组件的项目示例](https://github.com/ufologist/requirejs-example/archive/master.zip)分别下载下来, 作为项目的模版来使用即可
