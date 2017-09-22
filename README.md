@@ -1,6 +1,6 @@
 # 共用组件项目示例
 
-[基于 RequireJS 的跨项目共用前端组件(模块)方案](https://github.com/ufologist/requirejs-component/blob/master/principle.md)
+[基于 RequireJS 的跨项目共用前端组件(模块)方案](https://github.com/ufologist/requirejs-component/blob/gh-pages/principle.md)
 
 最终该项目需要发布到 CDN, 以便其他项目引用, 达到跨项目共用的目的.
 

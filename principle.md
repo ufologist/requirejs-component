@@ -1,6 +1,6 @@
 # 基于 RequireJS 的跨项目共用前端组件(模块)方案
 
-另外也可以[换成基于 seajs 3.x 的方案](https://github.com/ufologist/requirejs-component/blob/master/seajs.md)
+另外也可以[换成基于 seajs 3.x 的方案](https://github.com/ufologist/requirejs-component/blob/gh-pages/seajs.md)
 
 ## 背景
 
