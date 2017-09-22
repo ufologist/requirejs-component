@@ -184,7 +184,7 @@
 ## 项目示例
 
 * [共用组件项目示例](https://github.com/ufologist/requirejs-component)
-* [使用共用组件的项目示例](https://github.com/ufologist/requirejs-example)
+* [使用共用组件的项目示例](https://github.com/ufologist/requirejs-example) [预览效果](https://ufologist.github.io/requirejs-example/index.html)
 
 ## 使用方法
 
