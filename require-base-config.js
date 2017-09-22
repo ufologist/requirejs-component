@@ -75,7 +75,7 @@ require.config({
             'normalize': '//cdn.bootcss.com/normalize/7.0.0/normalize.min',
 
             // 共用组件示例
-            'component1.js': '//rawgit.com/ufologist/requirejs-component/master/component1/component1.js'
+            'component1.js': '//ufologist.github.io/requirejs-component/component1/component1.js'
         }
     }
 });
