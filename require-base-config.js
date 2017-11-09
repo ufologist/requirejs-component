@@ -8,9 +8,27 @@
 // 其他项目使用时, 先引入这个基础配置, 可以再根据需要添加或者覆盖一些配置
 // 例如:
 // require.config({
-//     urlArgs: 'v=' +  Date.now()
+//     waitSeconds: 15
 // });
-//
+
+// 统一控制所有引用资源的版本号
+// 这样只需要修改 require-base-config.js 的版本号即可更新所有依赖资源的版本号
+// 例如   //localhost:8001/require-base-config.js?v=1
+// 修改为 //localhost:8001/require-base-config.js?v=2
+// 这样所有的依赖的资源都会带上 v=2
+if (document.currentScript) {
+    var q = document.currentScript.src.indexOf('?');
+    var querystring = '';
+    if (q != -1) {
+        querystring = document.currentScript.src.substring(q + 1);
+    }
+    if (querystring) {
+        require.config({
+            urlArgs: querystring
+        });
+    }
+}
+
 // 如果需要支持多环境配置, 可以在这里定义一个全局的基础路径, 然后映射模块时拼接这个基础路径即可.
 // 需要覆盖这个基础路径的页面, 就在页面中先定义出基础路径即可控制使用不同的环境
 // 例如:
@@ -20,6 +38,7 @@
 // 
 // 在页面中我们先定义基础路径, 即可覆盖这个配置
 // <script>window.componentBaseUrl = 'http://test.cdn.com/';</script>
+
 require.config({
     // 如果使用了 data-main 则一定要记得设置 baseUrl, 因为使用了 data-main 会自动配置 baseUrl 为父级地址
     // 例如 data-main="index/index.js" 那么 baseUrl 就会被配置为 index/
