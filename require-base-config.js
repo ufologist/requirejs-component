@@ -30,9 +30,9 @@ if (document.currentScript) {
 }
 
 // 如果需要支持多环境配置, 可以在这里定义一个全局的基础路径, 然后映射模块时拼接这个基础路径即可.
-// 需要覆盖这个基础路径的页面, 就在页面中先定义出基础路径即可控制使用不同的环境
+// 需要支持多环境时, 在页面中先定义好这个基础路径即可控制使用不同的环境
 // 例如:
-// if (!window.componentBaseUrl) {
+// if (typeof window.componentBaseUrl == 'undefined') {
 //     window.componentBaseUrl = 'http://cdn.com/';
 // }
 // 

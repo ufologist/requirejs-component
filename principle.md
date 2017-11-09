@@ -230,3 +230,21 @@
 ## 使用方法
 
 将[共用组件项目示例](https://github.com/ufologist/requirejs-component/archive/gh-pages.zip)和[使用共用组件的项目示例](https://github.com/ufologist/requirejs-example/archive/gh-pages.zip)分别下载下来, 作为项目的模版来使用即可
+
+## 常见问题
+
+* 如何对引用的资源做版本控制, 方便统一更新缓存
+
+  即希望在所有引用资源的 URL 中追加一个版本号的参数, 以此来控制是否需要更新缓存
+
+  要实现这个功能, 只需要控制住源头(`require-base-config.js`)的版本号即可
+
+  例如
+  * 页面中引用 `//localhost:8001/require-base-config.js?v=1` 标识所有引用资源使用 `v1` 版本
+  * 修改为 `//localhost:8001/require-base-config.js?v=2` 即可更新所有引用资源使用 `v2` 版本
+  * 那么所有引用资源的 URL 上都会追加上 `v=2` 参数
+* 如何让公共组件配置支持多环境
+
+  可以在 `require-base-config.js` 中定义一个全局的基础路径, 然后映射模块时拼接这个基础路径即可.
+
+  需要支持多环境时, 在页面中先定义好这个基础路径即可控制使用不同的环境
