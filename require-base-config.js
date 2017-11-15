@@ -33,10 +33,9 @@ if (document.currentScript) {
 // 如果需要支持多环境配置, 可以在这里定义一个全局的基础路径, 然后映射模块时拼接这个基础路径即可.
 // 需要支持多环境时, 在页面中先定义好这个基础路径即可控制使用不同的环境
 // 例如:
-// if (typeof window.componentBaseUrl == 'undefined') {
-//     window.componentBaseUrl = 'http://cdn.com/';
-// }
-// 
+if (typeof window.componentBaseUrl == 'undefined') {
+    window.componentBaseUrl = '//cdn.bootcss.com';
+}
 // 在页面中我们先定义基础路径, 即可覆盖这个配置
 // <script>window.componentBaseUrl = 'http://test.cdn.com/';</script>
 
@@ -63,7 +62,7 @@ require.config({
     map: {
         '*': {
             // 通用模块
-            'css': '//cdn.bootcss.com/require-css/0.1.10/css.min.js',
+            'css': window.componentBaseUrl + '/require-css/0.1.10/css.min.js',
             // 当使用 map 来映射 text 插件时, 如果想给 text 插件添加配置,
             // 应该将模块ID 配置为 map 映射的地址
             //
@@ -95,7 +94,7 @@ require.config({
 
             // 共用 JS 模块
             // 注意 JS 模块映射的模块ID 和 URL 都要带上 .js 后缀
-            'zepto.js': '//cdn.bootcss.com/zepto/1.2.0/zepto.min.js',
+            'zepto.js': window.componentBaseUrl + '/zepto/1.2.0/zepto.min.js',
 
             // 共用 CSS 模块
             // 注意 CSS 模块的映射, 模块ID 和 URL 都不要添加 .css 后缀名
@@ -105,7 +104,7 @@ require.config({
             // 但是在使用的时候, 还是建议添加上 .css 后缀名, 统一风格
             // 例如: require('css!normalize.css');
             // 但其实 require('css!normalize'); 也是可以的
-            'normalize': '//cdn.bootcss.com/normalize/7.0.0/normalize.min',
+            'normalize': window.componentBaseUrl + '/normalize/7.0.0/normalize.min',
 
             // 共用组件示例
             'component1.js': '//ufologist.github.io/requirejs-component/component1/component1.js'
