@@ -11,16 +11,17 @@
 //     waitSeconds: 15
 // });
 
+(function() {
 // 统一控制所有引用资源的版本号
 // 这样只需要修改 require-base-config.js 的版本号即可更新所有依赖资源的版本号
 // 例如   //localhost:8001/require-base-config.js?v=1
 // 修改为 //localhost:8001/require-base-config.js?v=2
 // 这样所有的依赖的资源都会带上 v=2
 if (document.currentScript) {
-    var q = document.currentScript.src.indexOf('?');
+    var qIndex = document.currentScript.src.indexOf('?');
     var querystring = '';
-    if (q != -1) {
-        querystring = document.currentScript.src.substring(q + 1);
+    if (qIndex != -1) {
+        querystring = document.currentScript.src.substring(qIndex + 1);
     }
     if (querystring) {
         require.config({
@@ -39,6 +40,18 @@ if (document.currentScript) {
 // 在页面中我们先定义基础路径, 即可覆盖这个配置
 // <script>window.componentBaseUrl = 'http://test.cdn.com/';</script>
 
+var textModuleMap = window.componentBaseUrl + '/require-text/2.0.12/text.min.js';
+// 传递给模块的配置
+var moduleConfig = {};
+// 配置 text 模块加载资源时强制使用 XHR 模式(默认加载非跨域资源时使用 XHR 模式)
+// 如果不强制开启, 在使用 text 模块加载跨域资源时, 会被当作一个 JS 模块来加载(通过 <script> 标签),
+// 造成出现资源解析失败的错误提示(Uncaught SyntaxError: Unexpected token),
+// 因为实际加载的资源并非 JS 文件, 要加载的文件内容也不会加载到
+moduleConfig[textModuleMap] = {
+    useXhr: function() {
+        return true;
+    }
+};
 require.config({
     // 如果使用了 data-main 则一定要记得设置 baseUrl, 因为使用了 data-main 会自动配置 baseUrl 为父级地址
     // 例如 data-main="index/index.js" 那么 baseUrl 就会被配置为 index/
@@ -46,6 +59,7 @@ require.config({
     // 因为会影响到加载模块的地址, 特别是使用 css/text 等插件去加载非 js 的文件时,
     // 所以要记得配置为 baseUrl 的默认值: ./
     baseUrl: './',
+    config: moduleConfig,
     map: {
         '*': {
             // 通用模块
@@ -77,7 +91,7 @@ require.config({
             //         useXhr: function() {return true;}
             //     }
             // }
-            'text': '//cdn.bootcss.com/require-text/2.0.12/text.min.js',
+            'text': textModuleMap,
 
             // 共用 JS 模块
             // 注意 JS 模块映射的模块ID 和 URL 都要带上 .js 后缀
@@ -98,3 +112,4 @@ require.config({
         }
     }
 });
+})();
